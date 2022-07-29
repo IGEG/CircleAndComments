@@ -8,5 +8,7 @@
         public int Radius { get; set; }
         public string? Color { get; set; }
 
+        public IEnumerable<Comment> CommentsInCircle { get; set; }
+
     }
 }

@@ -1,5 +1,7 @@
 using CircleAndComments.Data;
+using CircleAndComments.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,15 +10,17 @@ var connectionString = builder.Configuration.GetConnectionString("CircleDB");
 //получаем сервис контекста данных
 builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase(connectionString));
 
-// Add services to the container.
+//контейнер дл€ Circle
+builder.Services.AddTransient<IDataCircle, DataCircle>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Circle/Error");
 }
 app.UseStaticFiles();
 
@@ -26,6 +30,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Circle}/{action=Index}/{id?}");
+
+//вызываем статический метод дл€ загрузки тестовых данных в Ѕƒ.
+SeedData.EnsurePopulated(app);
 
 app.Run();

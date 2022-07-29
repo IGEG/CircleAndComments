@@ -1,21 +1,25 @@
 ﻿using CircleAndComments.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using CircleAndComments.Data;
 
 namespace CircleAndComments.Controllers
 {
     public class CircleController : Controller
     {
         private readonly ILogger<CircleController> _logger;
+        private readonly IDataCircle dataCircle;
 
-        public CircleController(ILogger<CircleController> logger)
+        public CircleController(ILogger<CircleController> logger, IDataCircle _dataCircle)
         {
             _logger = logger;
+            this.dataCircle = _dataCircle;
         }
-
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var AllCirclesWithComments = await dataCircle.GetAllCirclesAsync();
+            return View(AllCirclesWithComments);
         }
 
         public IActionResult Privacy()
