@@ -1,7 +1,7 @@
 using CircleAndComments.Data;
 using CircleAndComments.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDataba
 //контейнер для Circle
 builder.Services.AddTransient<IDataCircle, DataCircle>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.
+            Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
 var app = builder.Build();
 

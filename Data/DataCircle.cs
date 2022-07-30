@@ -18,7 +18,7 @@ namespace CircleAndComments.Data
 
         public async Task<JsonResult> GetAllCirclesAsync()
         {
-            var Circle = await context.Circles.Include(p => p.CommentsInCircle).ToArrayAsync();
+            var Circle = await context.Circles.Include(p => p.CommentsInCircle.OrderBy(c=>c.CommentId)).ToArrayAsync();
             return new JsonResult(Circle);
         }
 

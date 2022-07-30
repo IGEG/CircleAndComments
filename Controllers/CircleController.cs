@@ -15,11 +15,18 @@ namespace CircleAndComments.Controllers
             _logger = logger;
             this.dataCircle = _dataCircle;
         }
-        [HttpGet]
-        public async Task<IActionResult> Index()
+        
+        public  IActionResult Index()
         {
-            var AllCirclesWithComments = await dataCircle.GetAllCirclesAsync();
-            return View(AllCirclesWithComments);
+            
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetAllCirclesAndComments()
+        { 
+        var allCirclesAndComments = dataCircle.GetAllCirclesAsync();
+            return Json(allCirclesAndComments);
         }
 
         public IActionResult Privacy()
