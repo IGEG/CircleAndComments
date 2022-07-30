@@ -1,12 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = "_Layou";
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p id="hello"><p/>
-</div>
+<body>
+     <h1>Hello World</h1>
+    <div id="grid"></div>
+
+
+
+
+
+
+</body>
 <script type="text/javascript">
-$    
+$(document).ready(function() { 
+    $("#grid").kendoGrid({
+        dataSource: {
+            type: "",
+            transport: {
+                read: "/Circle/GetAllCirclesAndComments",
+            }
+        }
+    });
+});
 </script>

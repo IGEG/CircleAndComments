@@ -25,8 +25,8 @@ namespace CircleAndComments.Controllers
         [HttpGet]
         public async Task<JsonResult> GetAllCirclesAndComments()
         { 
-        var allCirclesAndComments = dataCircle.GetAllCirclesAsync();
-            return Json(allCirclesAndComments);
+        return await dataCircle.GetAllCirclesAsync();
+            
         }
 
         public IActionResult Privacy()
