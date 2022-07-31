@@ -13,10 +13,10 @@ namespace CircleAndComments.Models
             if (!context.Circles.Any())
             {
                 context.Circles.AddRange(
-                    new Circle { CircleId = 1, PointX = 100, PointY = 100, Radius = 10, Color = "black" },
-                    new Circle { CircleId = 2, PointX = 200, PointY = 200, Radius = 20, Color = "yellow" },
-                    new Circle { CircleId = 3, PointX = 300, PointY = 300, Radius = 30, Color = "black" },
-                    new Circle { CircleId = 4, PointX = 400, PointY = 400, Radius = 40, Color = "yellow" }
+                    new Circle { CircleId = 1, PointX = 100, PointY = 100, Radius = 10, Color = "yellow" },
+                    new Circle { CircleId = 2, PointX = 300, PointY = 300, Radius = 30, Color = "blue" },
+                    new Circle { CircleId = 3, PointX = 500, PointY = 300, Radius = 30, Color = "green" },
+                    new Circle { CircleId = 4, PointX = 800, PointY = 100, Radius = 10, Color = "brown" }
 
                     );
                 context.SaveChanges();

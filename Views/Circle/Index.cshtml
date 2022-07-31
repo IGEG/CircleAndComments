@@ -5,23 +5,85 @@
 
 <body>
      <h1>Hello World</h1>
-    <div id="grid"></div>
-
-
-
-
-
+    <div id="grid">
+        <h2 id="h2"></h2>
+    </div>
+    <div id="container"></div>
+    
 
 </body>
 <script type="text/javascript">
-$(document).ready(function() { 
-    $("#grid").kendoGrid({
-        dataSource: {
-            type: "",
-            transport: {
-                read: "/Circle/GetAllCirclesAndComments",
+
+$(document).ready(function() {
+
+    $.ajax({
+        url:"http://localhost:5023/Circle/GetAllCirclesAndComments",
+        dataType:"json",
+        success: function(data) {
+            
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height,
+      });
+
+      var layer = new Konva.Layer();
+
+            for (var i = 0; i < data.length; i++) { 
+            var x = JSON.stringify(data[i].Color);
+            console.log(x);
+                var color = JSON.stringify(data[i].Color);
+                var group = new Konva.Group({});
+        var circle = new Konva.Circle({
+        x: data[i].PointX,
+        y: data[i].PointY,
+        radius: data[i].Radius,
+        fill:data[i].Color
+      });
+        group.add(circle);
+                var height = 20;
+                for (var j = 0; j < data[i].CommentsInCircle.length; j++) { 
+                     height = height + 20;
+        var simpleText = new Konva.Text({
+           
+ x: data[i].PointX,
+ y: data[i].PointY + height,
+ text: data[i].CommentsInCircle[j].Text,
+ fontSize: 30,
+ fontFamily: 'Calibri',
+ fill:data[i].CommentsInCircle[j].Color
+ });
+ 
+
+                    console.log(data[i].CommentsInCircle[j].Color);
+                group.add(simpleText);
+                }
+
+
+      layer.add(group);
+      stage.add(layer);
+      
             }
+            
         }
     });
-});
+
+
+
+/* $("#grid").kendoGrid({
+        dataSource: {
+            type: "json",
+            transport: {
+                read: "/Circle/GetAllCirclesAndComments",
+            },
+         
+        }
+    });
+*/
+  
+
+  });
 </script>
