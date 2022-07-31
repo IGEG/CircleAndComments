@@ -24,16 +24,16 @@ namespace CircleAndComments.Models
             if (!context.Comments.Any())
             {
                 context.Comments.AddRange(
-                    new Comment { CommentId = 1, Text = "Comment1", Color = "green", CircleId = 1 },
+                    new Comment { CommentId = 1, Text = "Comment1", Color = "white", CircleId = 1 },
                     new Comment { CommentId = 2, Text = "Comment2", Color = "yellow", CircleId = 1 },
-                    new Comment { CommentId = 3, Text = "Comment1", Color = "green", CircleId = 2 },
-                    new Comment { CommentId = 4, Text = "Comment1", Color = "red", CircleId = 3 },
-                    new Comment { CommentId = 5, Text = "Comment2", Color = "brown", CircleId = 3 },
-                    new Comment { CommentId = 6, Text = "Comment3", Color = "blue", CircleId = 3 },
-                    new Comment { CommentId = 7, Text = "Comment4", Color = "orange", CircleId = 3 },
-                    new Comment { CommentId = 8, Text = "Comment1", Color = "red", CircleId = 4 },
-                    new Comment { CommentId = 9, Text = "Comment2", Color = "orange", CircleId = 4 },
-                    new Comment { CommentId = 10, Text = "Comment3", Color = "blue", CircleId = 4 }
+                    new Comment { CommentId = 3, Text = "Comment1", Color = "white", CircleId = 2 },
+                    new Comment { CommentId = 4, Text = "Comment1", Color = "grey", CircleId = 3 },
+                    new Comment { CommentId = 5, Text = "Comment2", Color = "white", CircleId = 3 },
+                    new Comment { CommentId = 6, Text = "Comment3", Color = "yellow", CircleId = 3 },
+                    new Comment { CommentId = 7, Text = "Comment4", Color = "white", CircleId = 3 },
+                    new Comment { CommentId = 8, Text = "Comment1", Color = "grey", CircleId = 4 },
+                    new Comment { CommentId = 9, Text = "Comment2 looooooooong", Color = "white", CircleId = 4 },
+                    new Comment { CommentId = 10, Text = "Comment3", Color = "grey", CircleId = 4 }
                     );
                 context.SaveChanges();
             }
