@@ -6,6 +6,9 @@ DB in-memory реализовано при помощи EF.inmemory. Данны�
 	Запросы к DB работают асинхронно через async/await.
 Get запрос GetAllCirclesAndComments() возвращает  массив Json.  Через  include() join-им таблицы Circle и CommentsInCircle: context.Circles.Include(p => p.CommentsInCircle.OrderBy( c= > c.CommentId ) ).ToArrayAsync();
 На выходе получаем массив Circle с внутренним массивом CommentInCircle.
+Формат:
+[{"CircleId":1,"PointX":100,"PointY":100,"Radius":10,"Color":"yellow","CommentsInCircle":[{"CommentId":1,"Text":"Comment1","Color":"white","CircleId":1},{"CommentId":2,"Text":"Comment2","Color":"yellow","CircleId":1}]
+
 
 Frontend:
 
