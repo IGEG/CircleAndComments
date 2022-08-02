@@ -29,7 +29,7 @@ namespace CircleAndComments.Controllers
         public async Task DeleteCirclesAndComments(int Id)
         {
             await dataCircle.DeleteCircleAsync(Id);
-            RedirectToAction(nameof(Index));           
+             
         }
 
     }

@@ -4,7 +4,7 @@ class Data {
    
 // Метод  GetAll
 
-    getAllGroup() {
+    getAllCircle() {
         $.ajax({
             url: this.url, method: "GET", dataType: "json", success: function (data) {
                 var width = window.innerWidth;
@@ -67,6 +67,7 @@ class Data {
         method: 'DELETE',
         success: function () {
             alert('круг удален!');
+
         },
         error: function (error) {
             alert(error);

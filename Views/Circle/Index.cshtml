@@ -9,28 +9,10 @@
 
 $(document).ready(function(){
 
-    const data = new Data("/Circle/GetAllCirclesAndComments");
-
 //Загружаем все объекты на страницу
 
-    data.getAllGroup();
-
-    /*
-    circle.on('dblclick', function() {
-        var Id = circle.Id;
-        alert(`delete ${Id}`);
-        $.ajax({
-            url: '/Circle/DeleteCirclesAndComments' + Id,
-            type: 'Delete',
-            success: function(result) {
-                aler("данные удалены");
-            }
-        });
-    });
-    */
-
+    const data = new Data("/Circle/GetAllCirclesAndComments");
+    data.getAllCircle();
 
 });
-
-
 </script>
