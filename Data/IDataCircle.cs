@@ -7,7 +7,7 @@ namespace CircleAndComments.Data
     {
         Task<JsonResult> GetAllCirclesAsync();
         Task<JsonResult> GetCircleAsync(int Id);
-        Task<JsonResult> DeleteCircleAsync(int Id);
+        Task DeleteCircleAsync(int Id);
 
             
     }

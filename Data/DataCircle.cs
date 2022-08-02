@@ -11,15 +11,21 @@ namespace CircleAndComments.Data
         {
             context = _context;
         }
-        public Task<JsonResult> DeleteCircleAsync(int Id)
+        public async Task DeleteCircleAsync(int Id)
         {
-            throw new NotImplementedException();
+
+            var circle = await context.Circles.FirstOrDefaultAsync(c => c.CircleId == Id);
+            if (circle != null)
+            {
+                context.Circles.Remove(circle);
+            }
+            await context.SaveChangesAsync();
         }
 
         public async Task<JsonResult> GetAllCirclesAsync()
         {
-            var Circle = await context.Circles.Include(p => p.CommentsInCircle.OrderBy(c=>c.CommentId)).ToArrayAsync();
-            return new JsonResult(Circle);
+            var circle = await context.Circles.Include(p => p.CommentsInCircle.OrderBy(c=>c.CommentId)).ToArrayAsync();
+            return new JsonResult(circle);
         }
 
         public Task<JsonResult> GetCircleAsync(int Id)

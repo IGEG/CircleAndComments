@@ -7,37 +7,30 @@ namespace CircleAndComments.Controllers
 {
     public class CircleController : Controller
     {
-        private readonly ILogger<CircleController> _logger;
+       
         private readonly IDataCircle dataCircle;
-
-        public CircleController(ILogger<CircleController> logger, IDataCircle _dataCircle)
+        public CircleController( IDataCircle _dataCircle)
         {
-            _logger = logger;
             this.dataCircle = _dataCircle;
         }
         
         public  IActionResult Index()
         {
-            
             return View();
         }
 
         [HttpGet]
         public async Task<JsonResult> GetAllCirclesAndComments()
         { 
-        return await dataCircle.GetAllCirclesAsync();
-            
+        return await dataCircle.GetAllCirclesAsync();  
         }
 
-        public IActionResult Privacy()
+        [HttpDelete]
+        public async Task DeleteCirclesAndComments(int Id)
         {
-            return View();
+            await dataCircle.DeleteCircleAsync(Id);
+            RedirectToAction(nameof(Index));           
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
